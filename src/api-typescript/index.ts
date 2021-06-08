@@ -9,7 +9,7 @@ const dataPath = "./data/partners.json";
 
 // READ
 app.get("/partners", (req, res) => {
-  fs.readFile(dataPath, "utf8", (err, data) => {
+  fs.readFile(dataPath, "utf8", (err: any, data: string) => {
     if (err) {
       throw err;
     }
