@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from "react-router-dom";
+import NearMePage from "./pages/NearMe";
+import AboutPage from "./pages/About";
+import MainNavigation from "./components/layout/MainNavigation";
 
 function App() {
+  // Switch is Used to tell the browser that one of the Route should be displayed and not all as Nested Pages
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MainNavigation />
+      <Switch>
+        <Route path="/" exact>
+          <AboutPage />
+        </Route>
+        <Route path="/NearMe">
+          <NearMePage />
+        </Route>
+      </Switch>
     </div>
   );
 }
