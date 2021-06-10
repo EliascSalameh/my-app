@@ -2,13 +2,14 @@ import classes from "./DistanceInput.module.css";
 import Card from "../ui/Card.js";
 import { useRef } from "react";
 
-function DistanceInput() {
+function DistanceInput(props) {
   //In Order to catch the input we user the built in function  in React
   const distanceInputRef = useRef();
+
   //To Prevent the browser from refreshing which is the default behaviour add =>event.preventDefault()
   function SubmitHandler(event) {
     event.preventDefault();
-    var enteredDistanceInput = distanceInputRef.current.value;
+    props.getPartners(distanceInputRef.current.value);
   }
   return (
     <Card>

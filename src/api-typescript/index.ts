@@ -1,13 +1,18 @@
 import express from "express";
+import cors from "cors";
 
 //Create instance of express server
 const app = express();
 const fs = require("fs");
-
-// variables
+const allowedOrigins = "*";
+const options: cors.CorsOptions = {
+  origin: allowedOrigins,
+};
+app.use(cors(options));
+app.use(express.json());
+// Json File Path
 const dataPath = "./data/partners.json";
-
-// READ
+//Route to Read from Json
 app.get("/partners", (req, res) => {
   fs.readFile(dataPath, "utf8", (err: any, data: string) => {
     if (err) {
