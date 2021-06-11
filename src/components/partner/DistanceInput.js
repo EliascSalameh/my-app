@@ -23,27 +23,34 @@ function DistanceInput(props) {
         return response.json();
       })
       .then((data) => {
-        const newPartners = [];
-        data.map((part) => {
-          part.offices.map((off) => {
-            var values = off.coordinates.split(",");
-            console.log("Latitute--- " + values[0]);
-            console.log("Longitude--- " + values[1]);
+        const newPartnerList = [];
+
+        data.map((partner) => {
+          partner.offices.map((office) => {
+            var values = office.coordinates.split(",");
+
             const coords = {
               lat1: "51.5144636",
               lng1: "-0.142571",
               lat2: values[0],
               lng2: values[1],
             };
+
             var distanceInKilometers = greatCircleDistance(coords);
             console.log("Range --- " + distanceInputRef.current.value);
             if (distanceInKilometers <= distanceInputRef.current.value) {
-              newPartners.push(part);
+              var newPartner = {
+                id: partner.id + office.location,
+                organization: partner.organization,
+                address: office.address,
+              };
+              console.log(newPartner);
+              newPartnerList.push(newPartner);
             }
             console.log("distance in KM--- " + distanceInKilometers);
           });
         });
-        setLoadedPartners(newPartners);
+        setLoadedPartners(newPartnerList);
         setIsLoading(false);
       });
 
@@ -78,7 +85,10 @@ function DistanceInput(props) {
           </div>
         </form>
       </Card>
-      <PartnerList partners={loadedPartners} />
+      <hr className={classes.rounded} />
+      <section>
+        <PartnerList partners={loadedPartners} />
+      </section>
     </section>
   );
 }

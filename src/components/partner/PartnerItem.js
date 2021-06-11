@@ -7,9 +7,7 @@ function PartnerItem(props) {
         <div className={classes.content}>
           <h3>{props.organization}</h3>
           <ul>
-            {props.offices.map((office) => {
-              return <address>{office.address}</address>;
-            })}
+            <address>{props.address}</address>
           </ul>
         </div>
       </Card>

@@ -44,3 +44,7 @@
   background-color: #a50e48;
   border-color: #a50e48;
 }
+hr.rounded {
+  border-top: 8px solid #bbb;
+  border-radius: 5px;
+}

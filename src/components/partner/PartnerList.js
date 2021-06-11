@@ -1,16 +1,18 @@
 import PartnerItem from "./PartnerItem";
 import classes from "./PartnerList.module.css";
-function PartnerList(porps) {
+function PartnerList(props) {
   return (
-    <ul className={classes.list}>
-      {porps.partners.map((partner) => (
-        <PartnerItem
-          key={partner.id}
-          organization={partner.organization}
-          offices={partner.offices}
-        />
-      ))}
-    </ul>
+    <div className={classes.list}>
+      <ol>
+        {props.partners.map((partner) => (
+          <PartnerItem
+            key={partner.id}
+            organization={partner.organization}
+            address={partner.address}
+          />
+        ))}
+      </ol>
+    </div>
   );
 }
 export default PartnerList;
