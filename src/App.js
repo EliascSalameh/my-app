@@ -9,11 +9,11 @@ function App() {
     <div>
       <MainNavigation />
       <Switch>
-        <Route path="/" exact>
-          <AboutPage />
-        </Route>
         <Route path="/NearMe">
           <NearMePage />
+        </Route>
+        <Route path="/" exact>
+          <AboutPage />
         </Route>
       </Switch>
     </div>

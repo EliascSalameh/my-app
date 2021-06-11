@@ -5,14 +5,14 @@ import classes from "./MainNavigation.module.css";
 function MainNavigation() {
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>Whasmen ©</div>
+      <div className={classes.logo}>Wahsmen ©</div>
       <nav>
         <ul>
           <li>
-            <Link to="/">About</Link>
+            <Link to="/NearMe">Near Me</Link>
           </li>
           <li>
-            <Link to="/NearMe">Near Me</Link>
+            <Link to="/">About</Link>
           </li>
         </ul>
       </nav>
