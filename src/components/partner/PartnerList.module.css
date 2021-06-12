@@ -6,7 +6,39 @@
   padding: 20px 20px;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
   margin-bottom: 10px;
   cursor: default;
+}
+
+.table {
+  width: 100%;
+  text-align: left;
+  border: 0px dotted;
+}
+.table th {
+  color: black;
+  height: 40px;
+  text-align: center;
+  background-color: lightgrey;
+}
+
+.table tr {
+  color: black;
+  height: 30px;
+}
+
+.table td {
+  text-align: left;
+  padding-top: 10px;
+  padding-left: 10px;
+  vertical-align: top;
+}
+.table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
