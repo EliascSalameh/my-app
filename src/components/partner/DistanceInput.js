@@ -4,22 +4,25 @@ import { useRef } from "react";
 import { useState } from "react";
 import PartnerList from "../../components/partner/PartnerList";
 
-//Starbucks Cafe Central London (51.5144636,-0.142571)
-
 function DistanceInput(props) {
   //In Order to catch the input we user the built in function  in React
   const distanceInputRef = useRef();
-  const [isLoading, setIsLoading] = useState(true);
-  const [loadedPartners, setLoadedPartners] = useState([]);
   const { greatCircleDistance } = require("great-circle-distance");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setError] = useState(null);
+  const [loadedPartners, setLoadedPartners] = useState([]);
 
   function SubmitHandler(event) {
     //To Prevent the browser from refreshing which is the default behaviour add =>event.preventDefault()
     event.preventDefault();
     //Fetch Data
+    setError(null);
     setIsLoading(true);
     fetch("http://localhost:3001/partners")
       .then((response) => {
+        if (!response.ok) {
+          throw Error("Could not fetch the data.");
+        }
         return response.json();
       })
       .then((data) => {
@@ -28,7 +31,7 @@ function DistanceInput(props) {
         data.map((partner) => {
           partner.offices.map((office) => {
             var values = office.coordinates.split(",");
-
+            //Starbucks Cafe Central London (51.5144636,-0.142571)
             const coords = {
               lat1: "51.5144636",
               lng1: "-0.142571",
@@ -52,15 +55,11 @@ function DistanceInput(props) {
         });
         setLoadedPartners(newPartnerList);
         setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setIsLoading(false);
       });
-
-    if (isLoading) {
-      return (
-        <section>
-          <p>Loading....</p>
-        </section>
-      );
-    }
   }
 
   return (
@@ -85,9 +84,21 @@ function DistanceInput(props) {
           </div>
         </form>
       </Card>
-      <hr className={classes.rounded} />
       <section>
-        <PartnerList partners={loadedPartners} />
+        {isError && (
+          <div>
+            <h3 className={classes.errormessage}>{isError}</h3>
+          </div>
+        )}
+        {isLoading && (
+          <div>
+            <h3 className={classes.loadingmessage}>Loading....</h3>
+          </div>
+        )}
+        <hr className={classes.rounded} />
+      </section>
+      <section>
+        {!isLoading && !isError && <PartnerList partners={loadedPartners} />}
       </section>
     </section>
   );

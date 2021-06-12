@@ -50,3 +50,14 @@ hr.rounded {
   border-top: 8px solid #bbb;
   border-radius: 5px;
 }
+
+.errormessage {
+  font-size: 1rem;
+  color: red;
+  font-weight: bold;
+}
+.loadingmessage {
+  font-size: 1rem;
+  color: green;
+  font-weight: bold;
+}
