@@ -74,7 +74,7 @@ function DistanceInput(props) {
         <form className={classes.form} onSubmit={SubmitHandler}>
           <div className={classes.control}>
             <label className={classes.label} htmlFor="distance">
-              Enter Desired distance (km)
+              Enter desired distance (km)
             </label>
             <input
               type="Number"

@@ -33,8 +33,8 @@
 .actions button {
   font: inherit;
   cursor: pointer;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 0.5rem 1.5rem;
   border: 1px solid #77002e;
   border-radius: 4px;
@@ -43,7 +43,7 @@
 
 .actions button:hover,
 .actions button:active {
-  background-color: #a50e48;
+  background-color: lightgrey;
   border-color: #a50e48;
 }
 hr.rounded {
