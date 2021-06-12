@@ -12,14 +12,13 @@
 
 .table {
   width: 100%;
-  text-align: left;
-  border: 0px dotted;
 }
 .table th {
-  color: black;
+  color: #6f42c1;
   height: 40px;
   text-align: center;
   background-color: lightgrey;
+  font-size: 18px;
 }
 
 .table tr {
@@ -36,8 +35,7 @@
 .table,
 th,
 td {
-  border: 1px solid black;
-  border-collapse: collapse;
+  border: 1px dotted black;
 }
 tr:nth-child(even) {
   background-color: #f2f2f2;

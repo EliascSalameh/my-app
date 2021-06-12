@@ -46,6 +46,7 @@ function DistanceInput(props) {
                 id: partner.id + office.location,
                 organization: partner.organization,
                 address: office.address,
+                distance: Math.round(distanceInKilometers),
               };
               console.log(newPartner);
               newPartnerList.push(newPartner);
@@ -53,6 +54,11 @@ function DistanceInput(props) {
             console.log("distance in KM--- " + distanceInKilometers);
           });
         });
+
+        //Sort List By company Ascending
+        newPartnerList.sort((a, b) =>
+          a.organization > b.organization ? 1 : -1
+        );
         setLoadedPartners(newPartnerList);
         setIsLoading(false);
       })

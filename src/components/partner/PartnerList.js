@@ -10,6 +10,7 @@ function PartnerList(props) {
           <tr>
             <th>Organization</th>
             <th>Address</th>
+            <th>Distance(km)</th>
           </tr>
         </thead>
         <tbody>
@@ -18,6 +19,7 @@ function PartnerList(props) {
               key={partner.id}
               organization={partner.organization}
               address={partner.address}
+              distance={partner.distance}
             />
           ))}
         </tbody>
